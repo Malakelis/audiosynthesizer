@@ -1,0 +1,111 @@
+div {
+    border: 3px solid black;  /* black border around text */
+    padding: 5px; /* padding around the text / white border */
+    margin: 10px; 
+}
+  
+#start-button {
+  background-color: rgb(25, 194, 25);
+}
+  
+#stop-button {
+  background-color: red;
+}
+
+#toggle-button {
+  background-color: rgb(242, 238, 15);
+}
+
+#reset-button {
+  background-color: rgb(242, 165, 10);
+}
+
+/* envelope image*/
+.envelope-container {
+  display: flex;
+  align-items: flex-start; /* vertically center the items in the container */
+  max-width: 100%;
+  border: none;
+}
+
+.controls-container {
+  width: 40%;
+  height: 237px;
+  margin-left: -5px;
+  
+}
+
+.envelope-image-container {
+  margin-left: 20px; /* Add some space between the sliders and the image */
+}
+
+
+/* vibrato image */
+.LFO-container {
+  display: flex;
+  align-items: flex-start; /* vertically center the items in the container */
+  max-width: 100%;
+  border: none;
+}
+
+.LFOcontrols-container {
+  width: 20%;
+  height: 320; 
+  margin-left: -5px;  
+  margin-top: 0px;
+}
+
+.LFO-image-container {
+  margin-left: 20px; /* Add some space between the sliders and the image */
+  /* border: 1px solid #000; */
+  margin-top: 0px;
+}
+
+
+
+/* keys */
+.button-container {
+  display: flex;
+}
+
+#note-selects-div {
+  padding-left: 10px;
+}
+
+.key {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 0px; /* Rounded corners */
+  color: #000;
+  text-align: center;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none;
+  transition: background-color 0.3s; /* Smooth background color change */
+  cursor: pointer; /* Change cursor to indicate clickable */
+  display: inline-block;
+  flex: 1 0 auto; /* Flex grow, shrink, and basis */
+}
+
+.white.key {
+  background-color: #fff;
+  margin-right: -5px; /* space between white keys */
+  color: #000;
+  height: 250px;
+  width: 80px;
+  z-index: 1;
+}
+
+.black.key {
+  background-color: #000;
+  color: #fff;
+  height: 175px;
+  width: 40px;
+  position: absolute;
+  margin-left: -20px; /* Half of the key's width to position it correctly */
+  z-index: 2;
+  margin-top: 0px;
+}
+
+.black.key:active, .white.key:active {
+  background-color: #ccc;
+}
