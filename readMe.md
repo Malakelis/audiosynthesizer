@@ -17,8 +17,8 @@ Triangle Wave: Set the amplitude/gain of the Triangle Wave to pass through to mi
 Sawtooth Wave: Set the amplitude/gain of the Sawtooth Wave to pass through to mixer.
 
 **ADSR Envelope:** \
-Attack time: Set the Attack time to the desired time which will tune the synthesizer up to 100% volume \
-Decay Time: Sound decreases until it hits the sustain level \
+Attack time: Set the Attack time to the desired time which will tune the synthesizer up to 100% volume. \
+Decay Time: Sound decreases until it hits the sustain level. \
 Sustain Time: Time the sustain stage sustains the amplitude at user-defined value resulting from decay stage.
 
 **LFO - (Low Frequency Oscillator):** \
