@@ -27,6 +27,11 @@ Vibrato Speed: Ranges from 0 to 30 Hz, sets how fast the pitch variation occurs 
 Tremolo Amount: Ranges from 0 to 100% sets the amount of tremolo effect which modulates the amplitude volume. \
 Tremolo Speed: Ranges from 0 to 15 Hz, speed of the tremolo effect in Hz, which determines how quickly the amplitude changes.
 
+Delay:
+Delay Time: Ranges from 0s to 1s Set the amount of time for the signal to be delayed.
+Delay Feedback: Ranges from 0 to 100% Set the feedback amount of the signal.
+Delay Amount: Ranges from 0 to 100% sets the amount of Delay effect.
+
 Synthesizer Keyboard:
 After setting desired controls, press any of the synthesizer keyboard keys which will play the displayed octave of the note.
 

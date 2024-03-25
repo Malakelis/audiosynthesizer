@@ -497,13 +497,17 @@ function playCurrentNote(frequency = null) {
     //mixerGainNode.connect(delay);
     //filter1.connect(mixerGainNode);
 
+    filter5.connect(delay);
     filter5.connect(masterVolume);
-    delayAmountGain.connect(mixerGainNode);
+
+    delayAmountGain.connect(delay);
     delay.connect(feedback);
     feedback.connect(delay);
     delay.connect(masterVolume);
 
-    mixerGainNode.connect(masterVolume);
+    filter5.connect(masterVolume);
+  // mixerGainNode.connect(masterVolume);
+    //mixerGainNode.connect(masterVolume);
 
    // mixerGainNode.connect(filter1);
     //filter1.connect(filter2);

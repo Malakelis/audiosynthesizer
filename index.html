@@ -114,6 +114,15 @@
         function updateTremoloSpeedOutput(value, outputId) {
           document.getElementById(outputId).textContent = value + ' Hz';
         }
+        function updateDelayTimeOutput(value, outputId) {
+          document.getElementById(outputId).textContent = value + ' s';
+        }
+        function updateDelayFeedbackOutput(value, outputId) {
+          document.getElementById(outputId).textContent = parseInt((value/0.9)*100, 10) + '%';
+        }
+        function updateDelayAmountOutput(value, outputId) {
+          document.getElementById(outputId).textContent = parseInt((value/0.9)*100, 10) + '%';
+        }
 
         function resetSliders() {
             updateAmpOutput(0.2, 'volume-amplitude');
@@ -132,6 +141,9 @@
             updateVibratoSpeedOutput(0, 'vibrato-speed-output');
             updateTremoloOutput(0, 'tremolo-output'); 
             updateTremoloSpeedOutput(0, 'tremolo-speed-output');
+            updateDelayTimeOutput(0, 'delay-time-output');
+            updateDelayFeedbackOutput(0, 'delay-feedback-output');
+            updateDelayAmountOutput(0, 'delay-amount-output');
 
         }
 
@@ -153,6 +165,9 @@
           updateVibratoSpeedOutput(0, 'vibrato-speed-output');
           updateTremoloOutput(0, 'tremolo-output'); 
           updateTremoloSpeedOutput(0, 'tremolo-speed-output');
+          updateDelayTimeOutput(0, 'delay-output');
+          updateDelayFeedbackOutput(0, 'delay-feedback');
+          updateDelayAmountOutput(0, 'delay-output');
         }
 
             // Attach event listener to reset button
@@ -217,11 +232,18 @@
     <div id="delay-options">
       <h2>Delay</h2>
       <label for="delay-time-control">Delay Time</label><br>
-      <input id='delay-time-control' type="range" min = "0" max = "1" step='0.05' value='0'><br>
+      <input id='delay-time-control' type="range" min = "0" max = "1" step='0.05' value='0' oninput = "updateDelayTimeOutput(this.value, 'delay-time-output')">
+      <output id = "delay-time-output">0 s</output><br>
+
       <label for="feedback-control">Delay Feedback</label><br>
-      <input id='feedback-control' type="range" min = "0" max = ".9" step='0.05' value='0'><br>
+      <input id='feedback-control' type="range" min = "0" max = ".9" step='0.05' value='0' oninput = "updateDelayFeedbackOutput(this.value, 'delay-feedback-output')">
+      <output id = "delay-feedback-output">0%</output><br>
+
+
       <label for="delay-amount-control">Delay Amount</label><br>
-      <input id='delay-amount-control' type="range" min = "0" max = ".9" step='0.05' value='0'>
+      <input id='delay-amount-control' type="range" min = "0" max = ".9" step='0.05' value='0' oninput = "updateDelayFeedbackOutput(this.value, 'delay-amount-output')">
+      <output id = "delay-amount-output">0%</output>
+
     </div>
     <script src="synth.js"></script>
   </body>
