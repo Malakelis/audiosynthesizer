@@ -7,10 +7,10 @@ This website is deployed through GitHub pages on the following link: https://mal
 Master Volume: sets the volume of the final sound.
 Master reset: resets all the values of all sliders and note options. This will reset to whatever you began with.
 
-**Low-pass Filter control: **
+**Low-pass Filter control:**
 Set the cutoff frequency to the desired frequency which will attenuate anything above the user-defined threshold.
 
-**Oscillator Mixer:**
+**Oscillator Mixer:** \
 Sine Wave: Set the amplitude/gain of the Sine Wave to pass through to mixer
 Square Wave: Set the amplitude/gain of the Square Wave to pass through to mixer
 Triangle Wave: Set the amplitude/gain of the Triangle Wave to pass through to mixer
