@@ -16,7 +16,7 @@ Square Wave: Set the amplitude/gain of the Square Wave to pass through to mixer 
 Triangle Wave: Set the amplitude/gain of the Triangle Wave to pass through to mixer \
 Sawtooth Wave: Set the amplitude/gain of the Sawtooth Wave to pass through to mixer
 
-**ADSR Envelope:**
+**ADSR Envelope:** \
 Attack time: Set the Attack time to the desired time which will tune the synthesizer up to 100% volume \
 Decay Time: Sound decreases until it hits the sustain level \
 Sustain Time: Time the sustain stage sustains the amplitude at user-defined value resulting from decay stage.
