@@ -1,11 +1,37 @@
-Biquad frequency response cuts off some signals, attentuates others
-second order not perfect but can be perfected
+How to run:
+This website is deployed through GitHub pages on the following link: https://malakelis.github.io/audiosynthesizer/
 
-design decision was to use cascaded biquad filters to avoid the instability of higher order filters.
-To get the accuracy of the 10th order, I decided to use five biquad filters.
 
-Logarithmic slider to work well at lower levels we want
+Controls Usage:
 
-LFO is being used to modulate the signal while being connected to the four primary oscillators.
-This creates a vibrato effect which is a periodic change in the pitch of the note.
-Amount of the LFO gain is the vibratoAmount.
+Master Volume: sets the volume of the final sound.
+Master reset: resets all the values of all sliders and note options. This will reset to whatever you began with.
+
+Lowpass Filter control: 
+Set the cutoff frequency to the desired frequency which will attenuate anything above the user-defined threshold.
+
+Oscillator Mixer:
+Sin Wave: Set the amplitude/gain of the Sin Wave to pass through to mixer
+Square Wave: Set the amplitude/gain of the Square Wave to pass through to mixer
+Triangle Wave: Set the amplitude/gain of the Triangle Wave to pass through to mixer
+Sawtooth Wave: Set the amplitude/gain of the Sawtooth Wave to pass through to mixer
+
+ADSR Envelope:
+Attack time: Set the Attack time to the desired time which will tune the synthesizer up to 100% volume
+Decay Time: Sound decreases until it hits the sustain level
+Sustain Time: Time the sustain stage sustains the amplitude at user-defined value resulting from decay stage.
+
+LFO - (Low Frequency Oscillator):
+Vibrato Amount: Ranges from 0 to 100% sets the depth of the vibrato which modulates the pitch of the sound wave.
+Vibrato Speed: Ranges from 0 to 30 Hz, sets how fast the pitch variation occurs with 30 Hz indication a rapid flutter and low values being a slow warble.
+Tremolo Amount: Ranges from 0 to 100% sets the amount of tremolo effect which modulates the amplitude volume.
+Tremolo Speed: Ranges from 0 to 15 Hz, speed of the tremolo effect in Hz, which determines how quickly the amplitude changes.
+
+Synthesizer Keyboard:
+After setting desired controls, press any of the synthesizer keyboard keys which will play the displayed octave of the note.
+
+Siren/Melody generator:
+Select the desired note from the list of note frequencies for each note.
+Then adjust the tempo to the desired beats per minute.
+Start will begin the melody/siren and stop will stop it.
+You can also choose to press the Siren button which will provide an example of an emergency siren which can be a real world application of this synthesizer.

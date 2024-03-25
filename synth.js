@@ -1,44 +1,75 @@
 const notes = {
     "C4": 261.63,
-    "Db4": 277.18,
+    "C4#": 277.18,
     "D4": 293.66,
-    "Eb4": 311.13,
+    "D4#": 311.13,
     "E4": 329.63,
     "F4": 349.23,
-    "Gb4": 369.99,
+    "F4#": 369.99,
     "G4": 392.00,
-    "Ab4": 415.30,
+    "G4#": 415.30,
     "A4": 440,
-    "Bb4": 466.16,
+    "A4#": 466.16,
     "B4": 493.88,
-    "C5": 523.25
+    "C5": 523.25,
+    "C5#": 554.37,
+    "D5": 587.33,
+    "D5#": 622.25,
+    "E5": 659.25,
+    "F5": 698.46,
+    "F5#": 739.99,
+    "G5#": 784,
+    "A5": 880,
+    "A5#": 932.33,
+    "B5": 987.77
 }
-  
+
+
+
 // NOTE SELECTS
 const noteSelectsDiv = document.querySelector('#note-selects-div');
   //noteSelectsDiv.appendChild(lineBreak);
-for (let i = 0; i <= 7; i++) {
-   // const lineBreak = document.createElement('br');
-    const select = document.createElement('select');
-    select.id = `note ${i + 1}`;
-    for (let j = 0; j < Object.keys(notes).length; j++) {
-        const option = document.createElement('option');
-        option.value = j;
-        option.innerText = `${Object.keys(notes)[j]}`;
-        select.appendChild(option);
-        select.addEventListener('change', setCurrentNotes)
+    for (let i = 0; i <= 7; i++) {
+    // const lineBreak = document.createElement('br');
+        const select = document.createElement('select');
+        select.id = `note ${i + 1}`;
+        for (let j = 0; j < Object.keys(notes).length; j++) {
+            const option = document.createElement('option');
+            option.value = j;
+            option.innerText = `${Object.keys(notes)[j]}`;
+            select.appendChild(option);
+            select.addEventListener('change', setCurrentNotes)
+        }
+        noteSelectsDiv.appendChild(select);
     }
-    noteSelectsDiv.appendChild(select);
-}
+    //add start and stop button to website gui
+    const startButton = document.createElement('button');
+    startButton.id = 'start-button';
+    startButton.textContent = 'Start';
+    noteSelectsDiv.appendChild(startButton);
 
-let currentNotes = [0, 3, 0, 7, 8, 7, 3, 2]
+    const stopButton = document.createElement('button');
+    stopButton.id = 'stop-button';
+    stopButton.textContent = 'Stop';
+    noteSelectsDiv.appendChild(stopButton);
+
+    const sirenButton = document.createElement('button');
+    sirenButton.id = 'siren-button';
+    sirenButton.textContent = 'Siren';
+    noteSelectsDiv.appendChild(sirenButton);
+
+//let currentNotes = [2, 9, 2, 9, 2, 9, 2, 9];
+
+//currentNotes array automatically changes once you select another note
+let currentNotes = [0, 1, 0, 1, 0, 1, 0, 1];
 const noteSelects = document.querySelectorAll('select');
 function setNoteSelects() {
     for (let i = 0; i < currentNotes.length; i++) {
         noteSelects[i].value = currentNotes[i];
     }
 }
-  
+
+//set the value of the note from the currentNotes array
 function setCurrentNotes() {
     for (let i = 0; i < noteSelects.length; i++) {
         currentNotes[i] = noteSelects[i].value; 
@@ -46,6 +77,68 @@ function setCurrentNotes() {
 }
   
 setNoteSelects();
+
+document.getElementById('siren-button').addEventListener('click', sirenSliders);
+
+
+
+//Siren button to set notes, and settings to a preset siren
+sirenButton.addEventListener('click', function() {
+    currentNotes = [9, 2, 9, 2, 9, 2, 9, 2];
+    setNoteSelects();
+
+    masterVolume.gain.value = 0.2
+    volumeControl.value = 0.2;
+
+    sinGain= 0;
+    squareGain = 1;
+    triangleGain = 0;
+    sawToothGain = 0;
+    sin.value = 0;
+    square.value = 1;
+    triangle.value = 0;
+    sawtooth.value = 0;
+
+    sustainLevel = 0.8;
+    sustainLevelControl.value = 0.8;
+
+    tempo = 120.0;
+    tempoControl.value = tempo;
+
+    cutOffFrequency = 16000;
+    filterControl.value = 48;
+
+    attackTime = 0.3;
+    decayTime = 0.3;
+    sustainTime = 0.5;
+    releaseTime = 0.3;
+    noteDuration = attackTime + decayTime + releaseTime + sustainTime;
+    //sustainLevel = 0.8;
+    
+   // noteLength = 1; make note duration
+    attackControl.value = attackTime;
+    decayControl.value = decayTime;
+    sustainControl.value = sustainTime;
+    releaseControl.value = releaseTime;
+    //noteLengthControl.value = noteLength;
+
+    vibratoSpeed = 0;
+    vibratoAmount = 0;
+    vibratoSpeedControl.value = vibratoSpeed;
+    vibratoAmountControl.value = vibratoAmount;
+
+    tremoloAmount = 0;
+    tremoloSpeed = 0;
+    tremoloAmountControl.value = 0;
+    tremoloSpeedControl.value = 0;
+
+    delay.delayTime.value = 0;
+    feedback.gain.value = 0;
+    delayAmountGain.gain.value = 0; 
+    delayTimeControl.value = 0;
+    feedbackControl.value = 0;
+    delayAmountControl.value = 0;
+})
   
   
 // INIT CONTEXT AND MASTER VOLUME
@@ -223,9 +316,8 @@ buttons.forEach(button => {
 });
 
 
-//SYNTHESIZER BUTTONS
-const startButton = document.querySelector('#start-button');
-const stopButton = document.querySelector('#stop-button');
+//SYNTHESIZER MASTER CONTROLS
+
 const toggleButton = document.querySelector('#toggle-button');
 const resetButton = document.querySelector('#reset-button');
 const tempoControl = document.querySelector('#tempo-control');
@@ -248,6 +340,7 @@ stopButton.addEventListener('click', function() {
     isPlaying = false;
 })
 
+/*
 toggleButton.addEventListener('click', function() {
     if (!isPlaying){
         isPlaying = true;
@@ -255,10 +348,13 @@ toggleButton.addEventListener('click', function() {
     } else {
         isPlaying = false;
     }
-})
+}) */
 
 resetButton.addEventListener('click', function() {
     //isPlaying = false;
+
+    currentNotes = [0, 1, 0, 1, 0, 1, 0, 1];
+    setNoteSelects();
 
     masterVolume.gain.value = 0.2
     volumeControl.value = 0.2;
@@ -328,11 +424,11 @@ function noteLoop() {
 
 //active and inactive note color
 function nextNote() {
-    noteSelects[currentNoteIndex].style.background = "yellow";
+    noteSelects[currentNoteIndex].style.background = "red";
     if (noteSelects[currentNoteIndex - 1]) {
-        noteSelects[currentNoteIndex - 1].style.background = "white";
+       noteSelects[currentNoteIndex - 1].style.background = "rgb(0, 150, 255)";
     } else {
-        noteSelects[7].style.background = "white"
+        noteSelects[7].style.background = "rgb(0, 150, 255)"
     }
     currentNoteIndex++;
     if (currentNoteIndex === 8) {
@@ -407,20 +503,34 @@ function playCurrentNote(frequency = null) {
 
     //connect filter to mixer gain node
     
-
+    const lfo = context.createOscillator();
     const lfoGain = context.createGain();
+
+    /* vibrato amount sets the gain of lfogain which controls the depth of vibrato effect applied to each oscillator causing the pitch to oscillate. 
+    This is acheived through modulation of the oscillators' by the LFO connected to lfogain. 
+    vibrato amount ranges from 0 to 5 with a value of 0 indicating no vibrato effect and a value of 5 representing a maximum pitch of fluxuation.
+
+    vibrato speed sets the speed of the vibrato effect oscillation and controls how quickly the pitch of synthesized sound fluctuates.
+    This is measured in Hz and will range from 0 to 15 Hz for this synthesizer to avoid excessive distortion.
+     */
+
+
+    lfo.frequency.setValueAtTime(vibratoSpeed, 0);
     lfoGain.gain.setValueAtTime(vibratoAmount, 0);
+
+    //modulate each of the 
     lfoGain.connect(osc1.frequency)
     lfoGain.connect(osc2.frequency)
     lfoGain.connect(osc3.frequency)
     lfoGain.connect(osc4.frequency)
 
 
-    const lfo = context.createOscillator();
-    lfo.frequency.setValueAtTime(vibratoSpeed, 0);
     lfo.start(0);
     lfo.stop(context.currentTime + noteDuration);
     lfo.connect(lfoGain); 
+
+    //tremolo amount modulates the amplitude of the mixed signal
+    //tremolo speed in Hz is the speed of the tremolo effect
 
     const tremoloLfo = context.createOscillator();
     const tremoloGain = context.createGain();
@@ -428,22 +538,13 @@ function playCurrentNote(frequency = null) {
     tremoloLfo.frequency.setValueAtTime(tremoloSpeed, 0);
     tremoloGain.gain.setValueAtTime(tremoloAmount, 0);
 
-   //Tremolo LFO modulate tremoloGain gain
-    tremoloLfo.connect(tremoloGain.gain);
 
-    //connect gain to mixerGainNode
-    mixerGainNode.connect(tremoloGain);
+    tremoloLfo.connect(tremoloGain);
+    tremoloGain.connect(mixerGainNode.gain);
 
-    //pass through the filter
-   tremoloGain.connect(filter1);
 
     tremoloLfo.start(0);
     tremoloLfo.stop(context.currentTime + noteDuration);
-
-    
-
-
-
 
 
     osc1.type = 'sine';
@@ -489,13 +590,17 @@ function playCurrentNote(frequency = null) {
     //console.log(cutOffFrequency);
     //console.log(logSlider(20000));
     //console.log(logSliderFreq(48.38483));
-    console.log(cutOffFrequency);
+   // console.log(cutOffFrequency);
     //console.log(vibratoAmount);
     //console.log(vibratoSpeed);
-    console.log(noteGain1.gain.value);
-    console.log(noteGain2.gain.value);
-    console.log(noteGain3.gain.value);
-    console.log(noteGain4.gain.value);
+   // console.log(noteGain1.gain.value);
+   // console.log(noteGain2.gain.value);
+   // console.log(noteGain3.gain.value);
+   // console.log(noteGain4.gain.value);
+   console.log("mixerGain " + mixerGainNode.gain.value);
+   console.log("tremoloGain " + tremoloGain.gain.value);
+   console.log("tremoloGain " + tremoloAmount);
+   console.log("vibrato amount " + lfoGain.gain.value);
 }
 
 

@@ -2,30 +2,19 @@
   <body>
     <link rel="stylesheet" href="style.css">
 
-    <!--  buttons to start,stop,reset -->
+    
 
-   <!--  <button id="start-button"><img src="start.jpg"></button> -->
-
-    <button id="start-button">Start</button>
-    <button id="stop-button">Stop</button>
-    <button id="toggle-button">Toggle</button>
-    <button id="reset-button">Reset</button><br>
+    <button id="reset-button">Master Reset</button><br>
 
     <label for="volume-control">Master Volume</label><br>
     <input type="range" id="volume-control" min="0" max="1" step="0.05" value=".2" oninput="updateAmpOutput(this.value, 'volume-amplitude')">
     <output id="volume-amplitude">20%</output><br>
     
-    <label for="sustain-level">Sustain Level</label><br>
-    <input type="range" id="sustain-level" min="0" max="1" step="0.05" value=".8" oninput="updateSustainOutput(this.value, 'sustainVolume-output')">
-    <output id="sustainVolume-output">80%</output><br>
     
-    <label for="tempo-control">Tempo</label><br>
-    <input type="range" id="tempo-control" min="30" max="300" step="5" value="60" oninput="updateTempoOutput(this.value, 'tempo-output')">
-    <output id="tempo-output">60 BPM</output>
 
 
     <div id = "lowpass-filter" >
-      <h2>Lowpass Filter</h2>
+      <h2>Low-pass Filter</h2>
       <label for="filter-control">Cuttoff Frequency</label><br>
       <input type="range" id="filter-control" min="0" max="50" step="1" value="48.38483" oninput="updateFilterOutput(this.value, 'filter-output')">
       <output id="filter-output">16000 Hz</output>
@@ -56,28 +45,38 @@
       <button class="black key" data-frequency="830.61">G5#</button>
       <button class="white key" data-frequency="880">A5</button>
       <button class="black key" data-frequency="932.33">A5#</button>
-      <button class="white key" data-frequency="987.77">B5</button> <br> <br>
+      <button class="white key" data-frequency="987.77">B5</button> <br><br>
+
+      <label for="tempo-control">Tempo</label><br>
+      <input type="range" id="tempo-control" min="30" max="300" step="5" value="60" oninput="updateTempoOutput(this.value, 'tempo-output')">
+      <output id="tempo-output">60 BPM</output> <br><br>
 
     </div>
 
     <!-- radio buttons for the oscillators, begins with sine - checked -->
     <div class = "oscillator-container">
-      <h2>Oscillator</h2>
-      <label for="sin-level">Sin Wave</label><br>
-      <input type="range" id="sin-level" min="0" max="1" step="0.05" value="1" oninput="updateSinOutput(this.value, 'sin-output')">
-      <output id="sin-output">100%</output><br>
+      <div class = "oscillator-controls-container">
+        <h2>Oscillator Mixer</h2>
+        <label for="sin-level">Sine Wave</label><br>
+        <input type="range" id="sin-level" min="0" max="1" step="0.05" value="1" oninput="updateSinOutput(this.value, 'sin-output')">
+        <output id="sin-output">100%</output><br>
 
-      <label for="square-level">Square Wave</label><br>
-      <input type="range" id="square-level" min="0" max="1" step="0.05" value="0" oninput="updateSquareOutput(this.value, 'square-output')">
-      <output id="square-output">0%</output><br>
+        <label for="square-level">Square Wave</label><br>
+        <input type="range" id="square-level" min="0" max="1" step="0.05" value="0" oninput="updateSquareOutput(this.value, 'square-output')">
+        <output id="square-output">0%</output><br>
 
-      <label for="triangle-level">Triangle Wave</label><br>
-      <input type="range" id="triangle-level" min="0" max="1" step="0.05" value="0" oninput="updateTriangleOutput(this.value, 'triangle-output')">
-      <output id="triangle-output">0%</output><br>
+        <label for="triangle-level">Triangle Wave</label><br>
+        <input type="range" id="triangle-level" min="0" max="1" step="0.05" value="0" oninput="updateTriangleOutput(this.value, 'triangle-output')">
+        <output id="triangle-output">0%</output><br>
 
-      <label for="sawtooth-level">Sawtooth Wave</label><br>
-      <input type="range" id="sawtooth-level" min="0" max="1" step="0.05" value="0" oninput="updateSawtoothOutput(this.value, 'sawtooth-output')">
-      <output id="sawtooth-output">0%</output><br>
+        <label for="sawtooth-level">Sawtooth Wave</label><br>
+        <input type="range" id="sawtooth-level" min="0" max="1" step="0.05" value="0" oninput="updateSawtoothOutput(this.value, 'sawtooth-output')">
+        <output id="sawtooth-output">0%</output><br>
+      </div>
+      <div class = "waves-image-container">
+        <img src="Types_of_Soundwaves.jpg" alt="waves" class="adsr-image">
+      </div>
+
     </div>
 
 
@@ -111,13 +110,13 @@
           document.getElementById(outputId).textContent = value + ' s';
         }
         function updateVibratoOutput(value, outputId) {
-          document.getElementById(outputId).textContent = parseInt(value*100, 10) + '%';
+          document.getElementById(outputId).textContent = parseInt((value/5)*100, 10) + '%';
         }
         function updateVibratoSpeedOutput(value, outputId) {
           document.getElementById(outputId).textContent = value + ' Hz';
         }
         function updateTremoloOutput(value, outputId) {
-          document.getElementById(outputId).textContent = parseInt(value*100, 10) + '%';
+          document.getElementById(outputId).textContent = parseInt((value/0.9)*100, 10) + '%';
         }
         function updateTremoloSpeedOutput(value, outputId) {
           document.getElementById(outputId).textContent = value + ' Hz';
@@ -128,7 +127,6 @@
             updateSustainOutput(0.8, 'sustainVolume-output');
             updateTempoOutput(60, 'tempo-output');
             updateFilterOutput(48.38483, 'filter-output');
-            updateSinOutput(1, 'sin-output');
             updateSquareOutput(0, 'square-output');
             updateTriangleOutput(0, 'triangle-output');
             updateSawtoothOutput(0, 'sawtooth-output');
@@ -143,14 +141,36 @@
             updateTremoloSpeedOutput(0, 'tremolo-speed-output');
 
         }
+
+        function sirenSliders() {
+          updateSinOutput(0, 'sin-output');
+          updateSquareOutput(1, 'square-output');
+          updateTempoOutput(120, 'tempo-output');
+
+          updateAmpOutput(0.2, 'volume-amplitude');
+          updateSustainOutput(0.8, 'sustainVolume-output');
+          updateFilterOutput(48.38483, 'filter-output');
+          updateTriangleOutput(0, 'triangle-output');
+          updateSawtoothOutput(0, 'sawtooth-output');
+          updateOutput(0.3, 'attack-output');
+          updateOutput(0.3, 'decay-output');
+          updateOutput(0.5, 'sustain-output');
+          updateOutput(0.3, 'release-output');
+          updateVibratoOutput(0, 'vibrato-output'); 
+          updateVibratoSpeedOutput(0, 'vibrato-speed-output');
+          updateTremoloOutput(0, 'tremolo-output'); 
+          updateTremoloSpeedOutput(0, 'tremolo-speed-output');
+        }
+
             // Attach event listener to reset button
         document.getElementById('reset-button').addEventListener('click', resetSliders);
+        
     </script>
 
     <!-- ADSR sliders-->
     <div class="envelope-container">
       <div class = "controls-container">
-        <h2>Envelope</h2>
+        <h2>ADSR Envelope</h2>
         <label for="attack-control">Attack Time</label><br>
         <input type="range" id="attack-control" value="0.3" min="0" max="5" step="0.02" oninput="updateOutput(this.value, 'attack-output')">
         <output id="attack-output">0.3 s</output><br>
@@ -158,6 +178,10 @@
         <label for="decay-control">Decay Time</label><br>
         <input type="range" id="decay-control" value="0.3" min="0" max="0.5" step="0.02" oninput="updateOutput(this.value, 'decay-output')">
         <output id="decay-output">0.3 s</output><br>
+
+        <label for="sustain-level">Sustain Level</label><br>
+        <input type="range" id="sustain-level" min="0" max="1" step="0.05" value=".8" oninput="updateSustainOutput(this.value, 'sustainVolume-output')">
+        <output id="sustainVolume-output">80%</output><br>
 
         <label for="sustain-control">Sustain Time</label><br>
         <input type="range" id="sustain-control" value="0.5" min="0" max="2" step="0.05" oninput="updateOutput(this.value, 'sustain-output')">
@@ -181,14 +205,14 @@
         <input type="range" id="vibrato-amount-control" value="0" min="0" max="5" step="0.1" oninput = "updateVibratoOutput(this.value, 'vibrato-output')">
         <output id = "vibrato-output">0%</output><br>
         <label for="vibrato-speed-control">Vibrato Speed</label><br>
-        <input type="range" id="vibrato-speed-control" value="0" min="0" max="30" step="0.5" oninput = "updateVibratoSpeedOutput(this.value, 'vibrato-speed-output')">
+        <input type="range" id="vibrato-speed-control" value="0" min="0" max="30" step="1" oninput = "updateVibratoSpeedOutput(this.value, 'vibrato-speed-output')">
         <output id = "vibrato-speed-output">0 Hz</output><br>
         
         <label for="tremolo-amount-control">Tremolo Amount</label><br>
-        <input type="range" id="tremolo-amount-control" value="0" min="0" max="1" step="0.1" oninput = "updateTremoloOutput(this.value, 'tremolo-output')">
+        <input type="range" id="tremolo-amount-control" value="0" min="0" max="0.9" step="0.09" oninput = "updateTremoloOutput(this.value, 'tremolo-output')">
         <output id = "tremolo-output">0%</output><br>
         <label for="tremolo-speed-control">Tremolo Speed</label><br>
-        <input type="range" id="tremolo-speed-control" value="0" min="0" max="30" step="0.5" oninput = "updateTremoloSpeedOutput(this.value, 'tremolo-speed-output')">
+        <input type="range" id="tremolo-speed-control" value="0" min="0" max="15" step="1" oninput = "updateTremoloSpeedOutput(this.value, 'tremolo-speed-output')">
         <output id = "tremolo-speed-output">0 Hz</output>
       </div>
       <div class = "LFO-image-container">
