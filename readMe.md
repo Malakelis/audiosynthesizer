@@ -27,7 +27,7 @@ Vibrato Speed: Ranges from 0 to 30 Hz, sets how fast the pitch variation occurs 
 Tremolo Amount: Ranges from 0 to 100% sets the amount of tremolo effect which modulates the amplitude volume. \
 Tremolo Speed: Ranges from 0 to 15 Hz, speed of the tremolo effect in Hz, which determines how quickly the amplitude changes.
 
-Delay:
+**Delay:**
 Delay Time: Controls the delay interval before the echo is heard, ranging from 0 to 1 second. Setting this parameter adjusts the time gap between the original signal and its delayed replica.
 Delay Feedback: Determines how much of the delayed signal is fed back into the delay input, creating repeated echoes. The range is from 0% (no echoes) to 100% (maximum echo repetition). Adjusting this value influences the number of repetitions and the duration of the echo effect.
 Delay Amount: Delay Amount: Specifies the volume of the delayed signal in relation to the original, ranging from 0% (no delay effect) to 100% (all signal is delayed). This controls the balance between the original (dry) and delayed (wet) signals, allowing for a subtle to pronounced delay effect."
