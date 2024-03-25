@@ -165,13 +165,15 @@
           updateVibratoSpeedOutput(0, 'vibrato-speed-output');
           updateTremoloOutput(0, 'tremolo-output'); 
           updateTremoloSpeedOutput(0, 'tremolo-speed-output');
-          updateDelayTimeOutput(0, 'delay-output');
-          updateDelayFeedbackOutput(0, 'delay-feedback');
-          updateDelayAmountOutput(0, 'delay-output');
+          updateDelayTimeOutput(0, 'delay-time-output');
+          updateDelayFeedbackOutput(0, 'delay-feedback-output');
+          updateDelayAmountOutput(0, 'delay-amount-output');
         }
 
             // Attach event listener to reset button
-        document.getElementById('reset-button').addEventListener('click', resetSliders);
+            document.getElementById('reset-button').addEventListener('click', resetSliders);
+           // document.getElementById('siren-button').addEventListener('click', sirenSliders);
+       
         
     </script>
 

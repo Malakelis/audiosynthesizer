@@ -79,8 +79,10 @@ function setCurrentNotes() {
 setNoteSelects();
 
 document.getElementById('siren-button').addEventListener('click', sirenSliders);
+//ocument.getElementById('siren-button').addEventListener('click', sirenSliders);
 
-
+//document.getElementById('reset-button').addEventListener('click', resetSliders);
+//document.getElementById('siren-button').addEventListener('click', sirenSliders);
 
 //Siren button to set notes, and settings to a preset siren
 sirenButton.addEventListener('click', function() {
