@@ -11,7 +11,7 @@ Lowpass Filter control:
 Set the cutoff frequency to the desired frequency which will attenuate anything above the user-defined threshold.
 
 Oscillator Mixer:
-Sin Wave: Set the amplitude/gain of the Sin Wave to pass through to mixer
+Sine Wave: Set the amplitude/gain of the Sine Wave to pass through to mixer
 Square Wave: Set the amplitude/gain of the Square Wave to pass through to mixer
 Triangle Wave: Set the amplitude/gain of the Triangle Wave to pass through to mixer
 Sawtooth Wave: Set the amplitude/gain of the Sawtooth Wave to pass through to mixer
@@ -24,7 +24,7 @@ Sustain Time: Time the sustain stage sustains the amplitude at user-defined valu
 LFO - (Low Frequency Oscillator):
 Vibrato Amount: Ranges from 0 to 100% sets the depth of the vibrato which modulates the pitch of the sound wave.
 Vibrato Speed: Ranges from 0 to 30 Hz, sets how fast the pitch variation occurs with 30 Hz indication a rapid flutter and low values being a slow warble.
-Tremolo Amount: Ranges from 0 to 100% sets the amount of tremolo effect which modulates the amplitude volume.
+Tremolo Amount: Ranges from 0 to 100% sets the amount of tremolo effect which modulates the amplitude volume. \
 Tremolo Speed: Ranges from 0 to 15 Hz, speed of the tremolo effect in Hz, which determines how quickly the amplitude changes.
 
 Synthesizer Keyboard:
