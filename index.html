@@ -1,17 +1,10 @@
 <html>
   <body>
     <link rel="stylesheet" href="style.css">
-
-    
-
     <button id="reset-button">Master Reset</button><br>
-
     <label for="volume-control">Master Volume</label><br>
     <input type="range" id="volume-control" min="0" max="1" step="0.05" value=".2" oninput="updateAmpOutput(this.value, 'volume-amplitude')">
     <output id="volume-amplitude">20%</output><br>
-    
-    
-
 
     <div id = "lowpass-filter" >
       <h2>Low-pass Filter</h2>

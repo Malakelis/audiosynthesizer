@@ -489,10 +489,21 @@ function playCurrentNote(frequency = null) {
     filter5.frequency.setTargetAtTime(cutOffFrequency, context.currentTime, 0);
 
     mixerGainNode.connect(filter1);
-    filter1.connect(masterVolume);
+    filter1.connect(filter2);
+    filter2.connect(filter3);
+    filter3.connect(filter4);
+    filter4.connect(filter5);
+    //filter5.connect(masterVolume);
     //mixerGainNode.connect(delay);
     //filter1.connect(mixerGainNode);
 
+    filter5.connect(masterVolume);
+    delayAmountGain.connect(mixerGainNode);
+    delay.connect(feedback);
+    feedback.connect(delay);
+    delay.connect(masterVolume);
+
+    mixerGainNode.connect(masterVolume);
 
    // mixerGainNode.connect(filter1);
     //filter1.connect(filter2);
